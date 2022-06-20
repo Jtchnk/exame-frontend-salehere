@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputField = () => {
+const InputField = ({ value, inputOnChange }) => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <input
@@ -14,6 +14,9 @@ const InputField = () => {
           textAlign: 'center',
           margin: '36px 0',
         }}
+        type='text'
+        value={value}
+        onChange={inputOnChange}
       />
     </div>
   );

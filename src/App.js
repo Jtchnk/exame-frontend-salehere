@@ -1,7 +1,6 @@
 import React from 'react';
 import bg from './assets/images/bg.jpg';
 import logo from './assets/images/logo.png';
-import Proxumer from './pages';
 import Home from './pages/Home';
 
 const App = () => {

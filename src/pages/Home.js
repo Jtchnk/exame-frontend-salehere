@@ -1,30 +1,29 @@
 import React, { useState } from 'react';
-import Button from '../components/ButtonRed';
+import ButtonBigRed from '../components/ButtonBigRed';
+import ButtonSmallRed from '../components/ButtonSmallRed';
 import InputField from '../components/InputField';
 import SelectRoom from './SelectRoom';
 
 const Home = () => {
-  const [changeComp, setChangeComp] = useState(false);
+  const [changeComp, setChangeComp] = useState('');
+  const [name, setName] = useState('');
   const aaa = () => {
     return (
       <div>
-        <div
-          style={{
-            fontSize: '37px',
-            color: '#383838',
-            textAlign: 'center',
-            fontWeight: 'bold',
-            padding: '64px 0 0 0',
-          }}
-        >
-          ชื่อของคุณ
-        </div>
+        <div className='title'>ชื่อของคุณ</div>
         <div>
-          <InputField />
-          <Button
-            buttonName='ยืนยัน'
-            onClickConfirmed={() => setChangeComp(true)}
+          <InputField
+            value={name}
+            inputOnChange={(e) => setName(e.target.value)}
           />
+          {name && (
+            <div className='slide-up'>
+              <ButtonSmallRed
+                buttonName='ยืนยัน'
+                onClickConfirmed={() => setChangeComp('confirmed')}
+              />
+            </div>
+          )}
         </div>
       </div>
     );
@@ -32,17 +31,49 @@ const Home = () => {
 
   const bbb = () => {
     return (
-      <div>
-        <div className='Title'>Meen</div>
+      <div className='slide-up'>
+        <div className='title-name'>คุณ Meen</div>
         <div>
-          <InputField />
-          <Button buttonName='OK' />
+          <ButtonBigRed
+            buttonName='สร้างห้องใหม่'
+            onClickConfirmed={() => setChangeComp('createRoom')}
+          />
         </div>
       </div>
     );
   };
 
-  return <div>{changeComp ? bbb() : aaa()}</div>;
+  const ccc = () => {
+    return (
+      <div className='slide-up'>
+        <div className='title'>สร้างห้องใหม่</div>
+        <div>
+          <InputField
+            value={name}
+            inputOnChange={(e) => setName(e.target.value)}
+          />
+          {name && (
+            <div className='slide-up'>
+              <ButtonSmallRed
+                buttonName='ยืนยัน'
+                onClickConfirmed={() => setChangeComp('confirmed')}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      {changeComp === 'confirmed'
+        ? bbb()
+        : changeComp === 'createRoom'
+        ? ccc()
+        : aaa()}
+    </div>
+  );
 };
 
 export default Home;

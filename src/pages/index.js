@@ -6,13 +6,13 @@ import SelectRoom from './SelectRoom';
 
 const Proxumer = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
-  const [pageName, setPageName] = useState('Home');
+  // const [pageName, setPageName] = useState('Home');
 
-  const onChangePage = (index) => {
-    console.log(index);
+  const onChangePage = () => {
+    return <SelectRoom />;
     // setPageName('selectRoom');
   };
-  console.log(pageName);
+
   return (
     <div>
       <Home onClickConfirmed={onChangePage} />

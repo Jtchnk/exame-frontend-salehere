@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../components/ButtonRed';
+import ButtonSmallRed from '../components/ButtonSmallRed';
 import InputField from '../components/InputField';
 
 const SelectRoom = () => {
@@ -8,7 +8,7 @@ const SelectRoom = () => {
       <div className='Title'>Meen</div>
       <div>
         <InputField />
-        <Button buttonName='OK' />
+        <ButtonSmallRed buttonName='OK' />
       </div>
     </div>
   );
